@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cindy (Lihsin) Yeh | Finance & Analytics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0d0d0d;
+      --paper: #f5f0e8;
+      --accent: #b8860b;
+      --accent-2: #7d5d12;
+      --muted: #6b6355;
+      --line: rgba(13, 13, 13, 0.12);
+      --soft: rgba(184, 134, 11, 0.08);
+      --gold-light: #f0d080;
+      --shadow: rgba(13, 13, 13, 0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "DM Mono", monospace;
+      font-size: 13px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      opacity: 0.55;
+      z-index: 1000;
+    }
+
+    a { color: inherit; }
+
+    header {
+      position: relative;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      border-bottom: 1px solid var(--ink);
+      overflow: hidden;
+    }
+
+    .header-left {
+      padding: 80px 60px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 1px solid var(--ink);
+      position: relative;
+      z-index: 2;
+    }
+
+    .header-right {
+      position: relative;
+      background:
+        radial-gradient(circle at 22% 25%, rgba(240, 208, 128, 0.22), transparent 28%),
+        radial-gradient(circle at 80% 18%, rgba(184, 134, 11, 0.18), transparent 24%),
+        linear-gradient(180deg, #0d0d0d 0%, #14110d 100%);
+      overflow: hidden;
+    }
+
+    .header-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(245, 240, 232, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(245, 240, 232, 0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .eyebrow,
+    .section-num,
+    .pill,
+    .project-sub,
+    .edu-school,
+    .stat-copy,
+    .timeline-label {
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 10px;
+    }
+
+    .eyebrow {
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    h1,
+    h2,
+    .hero-name,
+    .exp-role,
+    .project-title,
+    .quote,
+    .edu-degree,
+    .stat-num {
+      font-family: "Cormorant Garamond", serif;
+    }
+
+    h1 {
+      font-size: clamp(52px, 7vw, 90px);
+      font-weight: 300;
+      line-height: 0.96;
+      letter-spacing: -0.02em;
+    }
+
+    h1 em,
+    h2 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-copy {
+      max-width: 480px;
+    }
+
+    .hero-intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 170px;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .hero-title {
+      min-width: 0;
+    }
+
+    .hero-photo-wrap {
+      display: flex;
+      justify-content: flex-end;
+      padding-top: 42px;
+    }
+
+    .hero-photo {
+      width: 170px;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center top;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: 10px 10px 0 var(--soft);
+      filter: saturate(0.96) contrast(1.02);
+    }
+
+    .tagline {
+      margin-top: 22px;
+      max-width: 410px;
+      font-size: 12px;
+      color: var(--muted);
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    .hero-summary {
+      margin-top: 28px;
+      max-width: 520px;
+      padding: 18px 0 0;
+      border-top: 1px solid var(--line);
+      display: grid;
+      gap: 14px;
+    }
+
+    .hero-summary p {
+      font-size: 12px;
+      color: var(--ink);
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    .contact-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px 24px;
+      margin-top: 36px;
+      max-width: 500px;
+    }
+
+    .contact-item {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: color 0.2s ease;
+    }
+
+    .contact-item::before {
+      content: "—";
+      color: var(--accent);
+    }
+
+    .contact-item:hover { color: var(--ink); }
+
+    .contact-icon {
+      width: 13px;
+      height: 13px;
+      flex: 0 0 auto;
+      color: currentColor;
+    }
+
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .pill {
+      border: 1px solid var(--line);
+      padding: 6px 10px;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .stats-panel {
+      position: absolute;
+      inset: 0;
+      padding: 54px 44px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      align-content: space-between;
+      z-index: 2;
+    }
+
+    .header-stat {
+      padding: 18px 0;
+      border-top: 1px solid rgba(245, 240, 232, 0.12);
+      color: rgba(245, 240, 232, 0.7);
+    }
+
+    .header-stat:nth-child(1),
+    .header-stat:nth-child(2) {
+      border-top: none;
+    }
+
+    .stat-num {
+      display: block;
+      font-size: 58px;
+      line-height: 0.95;
+      font-weight: 300;
+      color: var(--gold-light);
+      margin-bottom: 6px;
+    }
+
+    .stat-copy {
+      color: rgba(245, 240, 232, 0.54);
+    }
+
+    .scroll-hint {
+      position: absolute;
+      left: 50%;
+      bottom: 24px;
+      transform: translateX(-50%);
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      animation: float 2s ease-in-out infinite;
+      z-index: 10;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-6px); }
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    section {
+      padding: 88px 0;
+      border-bottom: 1px solid var(--line);
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 24px;
+      margin-bottom: 42px;
+    }
+
+    .section-num { color: var(--accent); min-width: 48px; }
+
+    h2 {
+      font-size: 40px;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      line-height: 1.06;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 36px;
+      align-items: start;
+    }
+
+    .quote {
+      font-size: 34px;
+      line-height: 1.1;
+      font-weight: 300;
+      max-width: 580px;
+    }
+
+    .about-copy p {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .timeline-card {
+      border: 1px solid var(--line);
+      padding: 24px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(184, 134, 11, 0.04));
+      box-shadow: 8px 8px 0 var(--soft);
+    }
+
+    .timeline-entry + .timeline-entry {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+
+    .timeline-label { color: var(--accent); margin-bottom: 6px; }
+    .timeline-title { font-size: 12px; color: var(--ink); }
+    .timeline-meta { font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .skill-cell {
+      background: var(--paper);
+      padding: 24px;
+      min-height: 118px;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+
+    .skill-cell:hover {
+      background: var(--ink);
+      transform: translateY(-3px);
+    }
+
+    .skill-icon {
+      color: var(--accent);
+      font-size: 18px;
+      margin-bottom: 12px;
+      transition: color 0.2s ease;
+    }
+
+    .skill-label {
+      color: var(--ink);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: color 0.2s ease;
+    }
+
+    .skill-note {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 11px;
+      transition: color 0.2s ease;
+    }
+
+    .skill-cell:hover .skill-icon { color: var(--gold-light); }
+    .skill-cell:hover .skill-label,
+    .skill-cell:hover .skill-note { color: var(--paper); }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 48px;
+      padding: 0 0 56px;
+      margin-bottom: 56px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .exp-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .exp-company {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+
+    .exp-loc {
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .exp-period {
+      display: inline-block;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 3px 8px;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+    }
+
+    .exp-role {
+      font-size: 28px;
+      font-weight: 300;
+      font-style: italic;
+      margin-bottom: 14px;
+    }
+
+    .exp-desc {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 16px;
+      max-width: 720px;
+    }
+
+    .exp-bullets {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .exp-bullets li {
+      position: relative;
+      padding-left: 18px;
+      font-size: 12px;
+    }
+
+    .exp-bullets li::before {
+      content: "◆";
+      position: absolute;
+      left: 0;
+      top: 3px;
+      color: var(--accent);
+      font-size: 7px;
+    }
+
+    .highlight {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .project-card {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 48px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .project-sub {
+      color: var(--gold-light);
+      margin-bottom: 14px;
+    }
+
+    .project-title {
+      font-size: 30px;
+      font-weight: 300;
+      margin-bottom: 12px;
+    }
+
+    .project-desc {
+      font-size: 12px;
+      color: rgba(245, 240, 232, 0.7);
+      max-width: 620px;
+    }
+
+    .project-points {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .project-points li {
+      padding-left: 18px;
+      position: relative;
+      color: rgba(245, 240, 232, 0.88);
+      font-size: 12px;
+    }
+
+    .project-points li::before {
+      content: "◆";
+      position: absolute;
+      left: 0;
+      top: 2px;
+      font-size: 7px;
+      color: var(--gold-light);
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      align-content: start;
+      gap: 10px;
+    }
+
+    .tag {
+      border: 1px solid rgba(240, 208, 128, 0.36);
+      color: var(--gold-light);
+      padding: 6px 10px;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+    }
+
+    .edu-card {
+      position: relative;
+      border: 1px solid var(--line);
+      padding: 34px 30px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .edu-card:hover {
+      border-color: var(--accent);
+      box-shadow: 6px 6px 0 var(--soft);
+      transform: translateY(-3px);
+    }
+
+    .edu-year {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      font-size: 32px;
+      color: rgba(13, 13, 13, 0.12);
+      font-family: "Cormorant Garamond", serif;
+    }
+
+    .edu-school {
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .edu-degree {
+      font-size: 22px;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+
+    .edu-detail {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    footer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 42px 40px;
+      border-top: 1px solid var(--ink);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .footer-name {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 22px;
+      font-weight: 300;
+    }
+
+    .footer-note {
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-align: right;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .header-left > * { animation: slideIn 0.8s ease both; }
+    .header-left > *:nth-child(1) { animation-delay: 0.08s; }
+    .header-left > *:nth-child(2) { animation-delay: 0.2s; }
+    .header-left > *:nth-child(3) { animation-delay: 0.36s; }
+
+    .header-stat { animation: slideIn 1s ease both; }
+
+    @media (max-width: 960px) {
+      header,
+      .about-grid,
+      .project-card,
+      .exp-item {
+        grid-template-columns: 1fr;
+      }
+
+      .header-left {
+        padding: 56px 28px 72px;
+        border-right: none;
+        border-bottom: 1px solid var(--ink);
+      }
+
+      .header-right {
+        min-height: 520px;
+      }
+
+      .stats-panel,
+      .contact-row,
+      .skills-grid,
+      .edu-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-intro {
+        grid-template-columns: minmax(0, 1fr) 148px;
+        gap: 22px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      main { padding: 0 20px; }
+      .stats-panel,
+      .contact-row,
+      .skills-grid,
+      .edu-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-card { padding: 32px 24px; }
+      .quote { font-size: 28px; }
+      h2 { font-size: 34px; }
+      .hero-intro {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+      .hero-photo-wrap {
+        justify-content: flex-start;
+        padding-top: 0;
+      }
+      .hero-photo {
+        width: min(220px, 58vw);
+      }
+      footer {
+        padding: 32px 20px 40px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .footer-note { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <div class="hero-copy">
+        <div class="hero-intro">
+          <div class="hero-title">
+            <p class="eyebrow">Finance · Analytics · Operations</p>
+            <h1>Cindy<br><em>Lihsin</em><br>Yeh</h1>
+          </div>
+          <div class="hero-photo-wrap">
+            <img class="hero-photo" src="/Users/li-hsin/Desktop/UCI_MSBA/Cindy Yeh.png" alt="Portrait of Cindy Yeh">
+          </div>
+        </div>
+        <p class="tagline">Finance and accounting professional with 5 years of experience in fintech and public accounting, now sharpening business analytics to turn financial operations into clearer, faster, and more scalable systems.</p>
+        <div class="hero-summary">
+          <p>Finance professional with 5 years in fintech, having managed 45K+ daily transactions, cut $1M in annual bank charges, and redesigned payment workflows that reduced processing time by 30%.</p>
+          <p>Now pursuing an M.S. in Business Analytics at UC Irvine to bring stronger data-driven thinking and process optimization to finance and operations roles.</p>
+        </div>
+        <div class="hero-pills">
+          <span class="pill">FINTECH</span>
+          <span class="pill">VENDOR PAYMENTS</span>
+          <span class="pill">RECONCILIATION</span>
+          <span class="pill">SQL &amp; PYTHON</span>
+          <span class="pill">DATA ANALYTICS</span>
+          <span class="pill">COMPLIANCE</span>
+        </div>
+      </div>
+
+      <div class="contact-row">
+        <a class="contact-item" href="mailto:cindy60532@gmail.com">cindy60532@gmail.com</a>
+        <a class="contact-item" href="tel:+19494688451">949-468-8451</a>
+        <a class="contact-item" href="https://www.linkedin.com/in/lnhycindy" target="_blank" rel="noreferrer">
+          <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M6.94 8.5H3.56V19h3.38zm.22-3.69C7.14 3.81 6.31 3 5.26 3S3.38 3.81 3.38 4.81 4.2 6.63 5.23 6.63h.02c1.07 0 1.91-.8 1.91-1.82M20.62 19h-3.37v-5.62c0-1.41-.5-2.37-1.76-2.37-.96 0-1.53.64-1.78 1.26-.09.22-.11.53-.11.84V19h-3.37s.04-9.75 0-10.5h3.37v1.49c.45-.69 1.25-1.68 3.05-1.68 2.22 0 3.89 1.45 3.89 4.57z"/>
+          </svg>
+          LinkedIn
+        </a>
+        <span class="contact-item">Irvine, CA</span>
+        <span class="contact-item">Open to finance & analytics roles</span>
+      </div>
+    </div>
+
+    <div class="header-right">
+      <div class="header-grid"></div>
+      <div class="stats-panel">
+        <div class="header-stat">
+          <span class="stat-num" data-target="1" data-prefix="$" data-suffix="M">0</span>
+          <span class="stat-copy">annual bank-charge reduction delivered</span>
+        </div>
+        <div class="header-stat">
+          <span class="stat-num" data-target="30" data-suffix="%">0</span>
+          <span class="stat-copy">workflow time reduced through redesign</span>
+        </div>
+        <div class="header-stat">
+          <span class="stat-num" data-target="5">0</span>
+          <span class="stat-copy">years across fintech and public accounting</span>
+        </div>
+        <div class="header-stat">
+          <span class="stat-num" data-target="10" data-suffix="%">0</span>
+          <span class="stat-copy">reimbursement cost reduction through policy improvement</span>
+        </div>
+        <div class="header-stat">
+          <span class="stat-num" data-target="3" data-suffix="+">0</span>
+          <span class="stat-copy">clients analyzed across regulated audit engagements</span>
+        </div>
+        <div class="header-stat">
+          <span class="stat-num" data-target="45" data-suffix="K+">0</span>
+          <span class="stat-copy">daily transactions reconciled and settled</span>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint">Scroll</div>
+  </header>
+
+  <main>
+    <section id="about">
+      <div class="section-header">
+        <span class="section-num">01 /</span>
+        <h2>Professional <em>Profile</em></h2>
+      </div>
+      <div class="about-grid">
+        <div>
+          <p class="quote">"I'm driven to help finance and operations teams make faster, smarter decisions by turning messy data into clear, actionable insight."</p>
+        </div>
+        <div class="about-copy">
+          <p>I've built my career in financial environments where accuracy, speed, and scalability all matter. At LINE Pay Taiwan, I managed end-to-end payment and settlement operations, supported new product launches, and transformed high-volume transaction data into financial insights that drove operational decisions.</p>
+          <p>My assurance background at PwC deepened my expertise in internal controls, compliance, and risk-aware thinking, giving me the ability to navigate complexity with both structure and judgment.</p>
+          <p>Now expanding into business analytics through my M.S. at UC Irvine, I bring a rare blend of financial operations, data analysis, and process optimization, with hands-on experience in SQL, Python, and building scalable workflows.</p>
+          <div class="timeline-card">
+            <div class="timeline-entry">
+              <div class="timeline-label">Current focus</div>
+              <div class="timeline-title">M.S. in Business Analytics</div>
+              <div class="timeline-meta">UC Irvine Paul Merage School of Business · Expected June 2026</div>
+            </div>
+            <div class="timeline-entry">
+              <div class="timeline-label">Core strength</div>
+              <div class="timeline-title">Finance operations + process improvement + analytics</div>
+              <div class="timeline-meta">From transaction integrity to management-ready insight</div>
+            </div>
+            <div class="timeline-entry">
+              <div class="timeline-label">Industry base</div>
+              <div class="timeline-title">Fintech and public accounting</div>
+              <div class="timeline-meta">Vendor payments, reconciliation, internal controls, IPO support</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="section-header">
+        <span class="section-num">02 /</span>
+        <h2>Technical <em>Skills</em></h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-cell">
+          <div class="skill-icon">⬡</div>
+          <div class="skill-label">Financial Analysis & Reporting</div>
+          <div class="skill-note">Operational reporting, reconciliations, anomaly review</div>
+        </div>
+        <div class="skill-cell">
+          <div class="skill-icon">⬡</div>
+          <div class="skill-label">Variance Analysis</div>
+          <div class="skill-note">Expense review, issue tracing, decision support</div>
+        </div>
+        <div class="skill-cell">
+          <div class="skill-icon">⬡</div>
+          <div class="skill-label">SQL</div>
+          <div class="skill-note">Querying and validating transaction-level data</div>
+        </div>
+        <div class="skill-cell">
+          <div class="skill-icon">⬡</div>
+          <div class="skill-label">Python & R</div>
+          <div class="skill-note">Analytics workflows and statistical exploration</div>
+        </div>
+        <div class="skill-cell">
+          <div class="skill-icon">⬡</div>
+          <div class="skill-label">Tableau & Data Visualization</div>
+          <div class="skill-note">Turning financial data into stakeholder-ready views</div>
+        </div>
+        <div class="skill-cell">
+          <div class="skill-icon">⬡</div>
+          <div class="skill-label">Statistical Modeling</div>
+          <div class="skill-note">Business analysis, pattern detection, forecasting support</div>
+        </div>
+        <div class="skill-cell">
+          <div class="skill-icon">⬡</div>
+          <div class="skill-label">Excel & PowerPoint</div>
+          <div class="skill-note">Decision decks, reporting packs, operating analysis</div>
+        </div>
+        <div class="skill-cell">
+          <div class="skill-icon">⬡</div>
+          <div class="skill-label">AP Operations & Reconciliation</div>
+          <div class="skill-note">Vendor payments, settlements, documentation control</div>
+        </div>
+        <div class="skill-cell">
+          <div class="skill-icon">⬡</div>
+          <div class="skill-label">Internal Controls & SOX 404</div>
+          <div class="skill-note">Compliance review, testing support, process rigor</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="section-header">
+        <span class="section-num">03 /</span>
+        <h2>Work <em>Experience</em></h2>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-company">LINE Pay Taiwan Ltd. (LY Corporation, Softbank Group)</div>
+          <div class="exp-loc">Taipei City, Taiwan</div>
+          <div class="exp-period">01/2024 – 06/2025</div>
+        </div>
+        <div>
+          <div class="exp-role">Senior Finance Associate</div>
+          <p class="exp-desc">Partnered with internal and external stakeholders on high-priority finance projects, using transaction data and operating metrics to surface anomalies, improve controls, and support management planning.</p>
+          <ul class="exp-bullets">
+            <li>Managed reconciliation and settlement for <span class="highlight">45K+ daily</span> vendor and merchant transactions, improving payment accuracy and reducing annual bank charges by <span class="highlight">$1M</span>.</li>
+            <li>Designed and implemented payment and settlement workflows to support large transaction volumes and ensure timely vendor payments during a new subsidiary launch.</li>
+            <li>Monitored payment operations metrics and high-volume transactions to identify discrepancies and strengthen financial control processes.</li>
+            <li>Supported IPO preparation by drafting financial documentation and coordinating with auditors and regulators to maintain compliance readiness.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-company">LINE Pay Taiwan Ltd. (LY Corporation, Softbank Group)</div>
+          <div class="exp-loc">Taipei City, Taiwan</div>
+          <div class="exp-period">03/2021 – 12/2023</div>
+        </div>
+        <div>
+          <div class="exp-role">Finance Associate</div>
+          <p class="exp-desc">Managed end-to-end accounting and tax operations while helping shape more efficient payment processes and providing practical financial recommendations for new service development.</p>
+          <ul class="exp-bullets">
+            <li>Redesigned vendor payment and reimbursement workflows, reducing processing time by <span class="highlight">30%</span> and improving operational efficiency.</li>
+            <li>Identified over-reimbursement cases while reviewing expense documentation and invoices; proposed clearer reimbursement guidelines and reduced reimbursement costs by <span class="highlight">10%</span>.</li>
+            <li>Reviewed payment requests, invoices, and supporting documentation to verify transaction accuracy and compliance with internal policies.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-company">PwC Taiwan</div>
+          <div class="exp-loc">Taipei City, Taiwan</div>
+          <div class="exp-period">09/2019 – 10/2020</div>
+        </div>
+        <div>
+          <div class="exp-role">Associate, Assurance Service</div>
+          <p class="exp-desc">Delivered audit, tax certification, and advisory support for multinational clients, including IPO-related engagements within regulated reporting environments.</p>
+          <ul class="exp-bullets">
+            <li>Planned and executed <span class="highlight">SOX 404</span> internal control testing for a PCAOB-regulated company to assess the effectiveness of internal control systems.</li>
+            <li>Performed analytical procedures to identify anomalies in financial statements across <span class="highlight">3+ clients</span> in industries including electric vehicle manufacturing and semiconductor-related operations.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="project">
+      <div class="section-header">
+        <span class="section-num">04 /</span>
+        <h2>Featured <em>Project</em></h2>
+      </div>
+      <div class="project-card">
+        <div>
+          <div class="project-sub">Capstone · Melbourne, Australia · 01/2026 – 06/2026</div>
+          <div class="project-title">PAN Group — Global Business Purpose & Performance Analysis</div>
+          <p class="project-desc">Serving as Student Project Manager on a cross-functional capstone project studying how purpose-driven business models influence financial performance. The work combines business research, NLP, and statistical analysis to turn qualitative themes into measurable signals.</p>
+          <ul class="project-points">
+            <li>Leading cross-team coordination and research writing for a multi-disciplinary analytics project.</li>
+            <li>Applying NLP and statistical methods to evaluate links between corporate purpose narratives and business outcomes.</li>
+            <li>Building a structured, evidence-based story from mixed qualitative and quantitative data.</li>
+          </ul>
+        </div>
+        <div class="project-tags">
+          <span class="tag">NLP</span>
+          <span class="tag">Statistical Analysis</span>
+          <span class="tag">Research Writing</span>
+          <span class="tag">Project Management</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="section-header">
+        <span class="section-num">05 /</span>
+        <h2><em>Education</em></h2>
+      </div>
+      <div class="edu-grid">
+        <div class="edu-card">
+          <div class="edu-year">2026</div>
+          <div class="edu-school">University of California, Irvine</div>
+          <div class="edu-degree">M.S. in Business Analytics</div>
+          <div class="edu-detail">Paul Merage School of Business · Relevant coursework: Machine Learning for Analytics, Predictive Analytics, Data and Programming for Analytics</div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-year">2019</div>
+          <div class="edu-school">Yuan Ze University · Exchange in Germany</div>
+          <div class="edu-degree">B.B.A. in Accounting</div>
+          <div class="edu-detail">Secondary major in Corporate Finance and Industry Analysis · Exchange experience at Technische Hochschule Augsburg, Germany</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-name">Cindy (Lihsin) Yeh</div>
+    <div class="footer-note">Finance · Analytics · Irvine, California · cindy60532@gmail.com</div>
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll("section");
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, { threshold: 0.12 });
+
+    sections.forEach((section) => sectionObserver.observe(section));
+
+    function animateNumber(el, target, options = {}) {
+      const { prefix = "", suffix = "" } = options;
+      let start = null;
+      const duration = 1400;
+      const step = (timestamp) => {
+        if (!start) start = timestamp;
+        const progress = Math.min((timestamp - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = prefix + Math.floor(eased * target).toLocaleString() + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }
+
+    const heroStats = document.querySelector(".stats-panel");
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const numbers = entry.target.querySelectorAll(".stat-num[data-target]");
+        numbers.forEach((num) => {
+          if (num.dataset.done === "true") return;
+          animateNumber(num, Number(num.dataset.target), {
+            prefix: num.dataset.prefix || "",
+            suffix: num.dataset.suffix || ""
+          });
+          num.dataset.done = "true";
+        });
+      });
+    }, { threshold: 0.35 });
+
+    if (heroStats) statsObserver.observe(heroStats);
+  </script>
+</body>
+</html>
